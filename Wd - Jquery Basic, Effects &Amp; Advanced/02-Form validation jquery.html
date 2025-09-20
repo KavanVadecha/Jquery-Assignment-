@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vish - From Validation</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <style>
+
+        form
+        {
+            border: 2px solid black;
+            text-align: center;
+            padding: 40px 80px;
+        }
+
+        input
+        {
+            margin: 10px;
+        }
+
+        b
+        {
+            color: rgb(0, 42, 255);
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <form onsubmit="return validate()">
+
+        <label for="Name">Name :</label>
+            <input type="text" class="inputfield">
+            <b class="warning">*Field is Empty</b><br>
+        
+        <label for="Email">Email :</label>
+            <input type="email" class="inputfield">
+            <b class="warning">*Field is Empty</b><br>
+      
+        <label for="numbver">Number :</label>
+            <input type="text" pattern="[0-9]+" class="inputfield">
+            <b class="warning">*Field is Empty</b><br>
+
+            
+        <label for="numbver">Message :</label>
+            <input type="text" class="inputfield">
+            <b class="warning">*Field is Empty</b><br>
+
+        <input type="submit">
+
+    </form>
+
+    <script>
+
+        let inputValue = $('.inputfield');
+        let warning = $('.warning');
+
+        
+
+        function validate(){
+
+            let valid = true;
+
+                for(i=0; i<inputValue.length; i++){
+
+                if($(inputValue[i]).val() === ""){
+
+                        $(warning[i]).css('display','block');
+                        valid = false;
+                    }
+
+
+                else{
+                        $(warning[i]).css('display','none');
+                }
+                
+            }  
+
+                return valid;
+        }
+
+        
+
+
+    </script>
+
+</body>
+</html>
